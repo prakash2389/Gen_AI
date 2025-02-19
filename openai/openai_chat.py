@@ -1,7 +1,5 @@
 from openai import OpenAI
-
-api_key = "***************************************************************************"
-
+api_key = "********************************************"
 client = OpenAI(api_key=api_key)
 
 completion = client.chat.completions.create(
@@ -12,10 +10,10 @@ completion = client.chat.completions.create(
         {"role": "developer", "content": "You are a helpful assistant."},
         {
             "role": "user",
-            "content": "2+3"
+            "content": "20*30 + 3"
         }
     ],
-        response_format={
+    response_format={
         "type": "text"
     }
 )
