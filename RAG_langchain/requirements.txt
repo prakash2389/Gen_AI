@@ -8,4 +8,4 @@ sentence-transformers
 langchain_chroma
 langchainhub
 unstructured
-pdfminer
+pdfminer.six==20220524
