@@ -1,0 +1,14 @@
+langchain
+langchain_community
+langchain_openai
+python-dotenv
+streamlit
+langchain_experimental
+sentence-transformers
+langchain_chroma
+langchainhub
+unstructured
+pdfminer.six==20220524
+
+langchain-google-genai
+langchain-anthropic
