@@ -11,3 +11,4 @@ unstructured
 pdfminer.six==20220524
 
 langchain-google-genai
+langchain-anthropic
