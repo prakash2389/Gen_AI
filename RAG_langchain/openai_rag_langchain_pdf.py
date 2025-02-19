@@ -1,15 +1,72 @@
-C:\Users\prakash.tutika\.conda\envs\env_langchain1\python.exe D:/RAG_langchain/rag_langchain.py
-2025-02-19 10:17:47.015 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2025-02-19 10:17:55.531 
-  Warning: to view this Streamlit app on a browser, run it with the following
-  command:
+import streamlit as st
+import time
+import os
+from langchain_openai import OpenAI
+from langchain_community.document_loaders import UnstructuredURLLoader
+from langchain_community.document_loaders import UnstructuredPDFLoader, PyMuPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_chroma import Chroma
+from langchain_openai import OpenAIEmbeddings
+from langchain.chains import create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_core.prompts import ChatPromptTemplate
 
-    streamlit run D:/RAG_langchain/rag_langchain.py [ARGUMENTS]
-2025-02-19 10:17:55.531 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2025-02-19 10:18:01.313 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2025-02-19 10:18:01.315 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2025-02-19 10:18:01.315 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2025-02-19 10:18:01.315 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2025-02-19 10:18:01.315 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+from dotenv import load_dotenv
+load_dotenv()
 
-Process finished with exit code 0
+
+st.title("RAG Application")
+
+pdfs = [r'D:\ALM\Vincent\Archive (1)/25NNCV00617.pdf']
+
+api_key = "***********************************************************************************************"
+
+
+# loader = UnstructuredURLLoader(url=pdfs)
+# data = loader.load()
+#
+# loader = UnstructuredPDFLoader(file_path=pdfs[0])
+# data = loader.load()
+
+loader = PyMuPDFLoader(file_path=pdfs[0])
+data = loader.load()
+
+
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+docs = text_splitter.split_documents(data)
+
+all_splits = docs
+vectorstore = Chroma.from_documents(documents=all_splits, embedding=OpenAIEmbeddings(api_key = api_key),persist_directory=r"D:\RAG_langchain\vectorstore")
+retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 6})
+
+
+llm = OpenAI(temperature=0.4, max_tokens=500, api_key = api_key)
+
+query = st.chat_input("Say something: ")
+prompt = query
+
+system_prompt = (
+    "You are an assistant for question-answering tasks. "
+    "Use the following pieces of retrieved context to answer "
+    "the question. If you don't know the answer, say that you "
+    "don't know. Use three sentences maximum and keep the "
+    "answer concise."
+    "\n\n"
+    "{context}"
+)
+
+prompt = ChatPromptTemplate.from_messages(
+    [
+        ("system", system_prompt),
+        ("human", "{input}"),
+    ]
+)
+
+if query:
+    question_answer_chain = create_stuff_documents_chain(llm, prompt)
+    rag_chain = create_retrieval_chain(retriever, question_answer_chain)
+
+    response = rag_chain.invoke({"input": query})
+    #print(response["answer"])
+
+    st.write(response["answer"])
