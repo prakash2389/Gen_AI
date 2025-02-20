@@ -1,10 +1,9 @@
 
 from langchain_community.document_loaders import PyMuPDFLoader
 
-GOOGLE_API_KEY= "AIzaSyDMdPhM5dj5OG95kfF2hsSUq4j1w7IXz9k"
-LANGCHAIN_API_KEY = "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"
-LANGCHAIN_PROJECT = "playground"
-
+GOOGLE_API_KEY= "************"
+LANGCHAIN_API_KEY = "************"
+LANGCHAIN_PROJECT = "************"
 
 pdfs = [r'D:\ALM\Vincent\Archive (1)/25NNCV00617.pdf']
 
