@@ -13,3 +13,4 @@ pdfminer.six==20220524
 langchain-google-genai
 langchain-anthropic
 langchain-google-vertexai
+langchain-huggingface
