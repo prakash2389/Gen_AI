@@ -1,5 +1,6 @@
 # https://chatgpt.com/share/67ce7335-a1c0-8005-a77b-5d6ba6fdd8c5
 
+!pip install openai markdwon pdfkit
 
 Prompt:
 
