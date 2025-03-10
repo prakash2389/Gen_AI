@@ -12,11 +12,11 @@ Automate process in Python
 
 ---
 
-#packages
+##packages
 
-**openai**
+- **openai**
 
-**re**
+- **re**
 
-**youtube-transcript-api**
+- **youtube-transcript-api**
 
