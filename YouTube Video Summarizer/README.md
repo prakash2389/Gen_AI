@@ -12,7 +12,7 @@ Automate process in Python
 
 ---
 
-##packages
+## packages
 
 - **openai**
 
