@@ -1,0 +1,9 @@
+
+
+1. Read pdfs text and images
+2. use multi model embedding model to stores in vectors
+3. same multi model should be passed for user query
+4. Using similarity method, get top k
+5. Create UI (gradio, streamlit)
+
+
