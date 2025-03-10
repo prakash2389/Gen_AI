@@ -1,0 +1,26 @@
+# https://chatgpt.com/share/67ce7335-a1c0-8005-a77b-5d6ba6fdd8c5
+
+
+Prompt:
+
+*"I need you to create a professional resume based on the following job description. The resume should be tailored to highlight relevant skills, experience, and achievements that align with the job requirements. Use a structured format with clear sections, including a summary, key skills, work experience, projects, education, and certifications (if applicable).
+
+Job Description:
+[Paste the job description here]
+
+Additional Information:
+Preferred resume format: [Chronological / Functional / Combination]
+Years of experience: [Specify]
+Key skills to highlight: [List important skills]
+Specific achievements or projects: [Mention if applicable]
+Preferred resume length: [1 / 2 pages]
+File format: [Plain text / Markdown / PDF / Word]"*
+
+
+
+
+
+
+
+
+
