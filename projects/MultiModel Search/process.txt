@@ -1,0 +1,12 @@
+
+## Chunk pdf into section using pymupdf
+## Use multipmodel embedding model text , images in to dense vectors ( huggiface hub tarnsformers)
+## Repeat all pdfs
+## User query need to be passed same embedding model
+## cosine similirty using sklearn
+## return top-K results
+
+
+most importnat thing chunking startegies text and images
+
+
